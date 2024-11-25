@@ -1,0 +1,28 @@
+<form [formGroup]="userForm" (ngSubmit)="submitForm()">
+  <div class="form-group">
+    <input formControlName="firstName" type="text" placeholder="Primeiro Nome" />
+    <div *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched" class="error">
+      O campo "Primeiro Nome" é obrigatório.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input formControlName="lastName" type="text" placeholder="Último Nome" />
+    <div *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched" class="error">
+      O campo "Último Nome" é obrigatório.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input formControlName="email" type="email" placeholder="Email" />
+    <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" class="error">
+      <span *ngIf="userForm.get('email')?.errors?.['required']">O campo "Email" é obrigatório.</span>
+      <span *ngIf="userForm.get('email')?.errors?.['email']">Insira um endereço de email válido.</span>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="isSaving || userForm.invalid">
+    {{ editingUser ? 'Atualizar Usuário' : 'Adicionar Usuário' }}
+  </button>
+  <button type="button" (click)="cancelEdit.emit()" *ngIf="editingUser">Cancelar</button>
+</form>

@@ -1,0 +1,78 @@
+ul {
+  list-style: none; /* Remove os marcadores padrão */
+  padding: 0;
+  margin: 20px 0;
+
+  li {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente os itens */
+    justify-content: space-between; /* Distribui os elementos horizontalmente */
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9; /* Fundo claro */
+    border: 1px solid #ddd; /* Borda sutil */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+
+    span {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
+      flex: 1; /* O texto ocupa o máximo de espaço disponível */
+      margin-right: 10px; /* Espaçamento entre o texto e os botões */
+      white-space: nowrap; /* Impede quebra de linha */
+      overflow: hidden; /* Trunca texto longo */
+      text-overflow: ellipsis; /* Adiciona "..." ao texto truncado */
+    }
+
+    button {
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-left: 10px;
+
+      &[disabled] {
+        background-color: #ccc; /* Cinza para botões desativados */
+        cursor: not-allowed;
+      }
+
+      &:first-of-type {
+        background-color: #007bff; /* Azul para "Editar" */
+        color: white;
+
+        &:hover:not([disabled]) {
+          background-color: #0056b3; /* Azul mais escuro no hover */
+        }
+      }
+
+      &:last-of-type {
+        background-color: #dc3545; /* Vermelho para "Excluir" */
+        color: white;
+
+        &:hover:not([disabled]) {
+          background-color: #b02a37; /* Vermelho mais escuro no hover */
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column; /* Empilha os itens em telas menores */
+      align-items: flex-start;
+
+      span {
+        margin-bottom: 8px; /* Espaçamento entre texto e botões */
+        margin-right: 0; /* Remove espaçamento lateral em telas menores */
+      }
+
+      button {
+        margin-left: 0; /* Remove margem entre botões */
+        margin-bottom: 5px; /* Adiciona espaçamento vertical entre botões */
+        width: 100%; /* Botões ocupam toda a largura */
+      }
+    }
+  }
+}

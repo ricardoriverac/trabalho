@@ -1,0 +1,25 @@
+<div class="products">
+  <h1>Gerenciar Produtos</h1>
+
+  <!-- Mensagem de erro -->
+  <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <!-- Spinner de carregamento -->
+  <div class="loading" *ngIf="isLoading">Carregando produtos...</div>
+
+  <!-- Formulário de produto -->
+  <app-product-form
+    [editingProduct]="editingProduct"
+    [isSaving]="isSaving"
+    (saveProduct)="editingProduct ? updateProduct($event) : addProduct($event)"
+    (cancelEdit)="editingProduct = null"
+  ></app-product-form>
+
+  <!-- Lista de produtos -->
+  <app-product-list
+    [products]="products"
+    [isSaving]="isSaving"
+    (editProduct)="setEditingProduct($event)"
+    (deleteProduct)="deleteProduct($event)"
+  ></app-product-list>
+</div>

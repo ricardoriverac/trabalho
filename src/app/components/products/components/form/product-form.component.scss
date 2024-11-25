@@ -1,0 +1,77 @@
+form {
+  max-width: 600px; /* Largura máxima do formulário */
+  margin: 0 auto; /* Centralizar formulário */
+  padding: 60px;
+  background-color: #f9f9f9; /* Fundo claro */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+
+  .form-group {
+    margin-bottom: 20px;
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+      &:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 4px rgba(0, 123, 255, 0.5); /* Sombra ao focar */
+      }
+
+      &::placeholder {
+        color: #aaa;
+        font-style: italic;
+      }
+    }
+
+    textarea {
+      resize: vertical; /* Permitir redimensionamento apenas na vertical */
+      min-height: 100px; /* Altura mínima para o textarea */
+    }
+
+    .error {
+      margin-top: 5px;
+      color: #dc3545; /* Vermelho para erros */
+      font-size: 0.9rem;
+    }
+  }
+
+  button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &[type="submit"] {
+      background-color: #007bff; /* Azul padrão */
+      color: #fff;
+
+      &:hover {
+        background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+      }
+
+      &:disabled {
+        background-color: #ccc; /* Cinza quando desabilitado */
+        cursor: not-allowed;
+      }
+    }
+
+    &[type="button"] {
+      background-color: #6c757d; /* Cinza para botão de cancelar */
+      color: #fff;
+      margin-left: 10px;
+
+      &:hover {
+        background-color: #5a6268; /* Cinza mais escuro ao passar o mouse */
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<ul>
+    <li *ngFor="let product of products">
+      <!-- Primeira linha: Título e Preço -->
+      <div class="product-header">
+        <span class="title">{{ product.title }}</span>
+        <span class="price">R$ {{ product.price.toFixed(2) }}</span>
+      </div>
+  
+      <!-- Segunda linha: Descrição -->
+      <div class="product-description">
+        {{ product.description }}
+      </div>
+  
+      <!-- Terceira linha: Botões -->
+      <div class="product-actions">
+        <button (click)="editProduct.emit(product)" [disabled]="isSaving">
+          Editar
+        </button>
+        <button (click)="deleteProduct.emit(product.id)" [disabled]="isSaving">
+          Excluir
+        </button>
+      </div>
+    </li>
+  </ul>
+  

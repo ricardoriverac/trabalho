@@ -1,0 +1,47 @@
+<form [formGroup]="productForm" (ngSubmit)="submitForm()">
+  <div class="form-group">
+    <input formControlName="title" type="text" placeholder="Título" />
+    <div
+      *ngIf="
+        productForm.get('title')?.invalid && productForm.get('title')?.touched
+      "
+      class="error"
+    >
+      O campo "Título" é obrigatório.
+    </div>
+  </div>
+  <div class="form-group">
+    <textarea formControlName="description" placeholder="Descrição"></textarea>
+    <div
+      *ngIf="
+        productForm.get('description')?.invalid &&
+        productForm.get('description')?.touched
+      "
+      class="error"
+    >
+      O campo "Descrição" é obrigatório.
+    </div>
+  </div>
+  <div class="form-group">
+    <input formControlName="price" type="number" placeholder="Preço" />
+    <div
+      *ngIf="
+        productForm.get('price')?.invalid && productForm.get('price')?.touched
+      "
+      class="error"
+    >
+      <span *ngIf="productForm.get('price')?.errors?.['required']"
+        >O campo "Preço" é obrigatório.</span
+      >
+      <span *ngIf="productForm.get('price')?.errors?.['min']"
+        >O preço deve ser maior ou igual a 0.</span
+      >
+    </div>
+  </div>
+  <button type="submit" [disabled]="isSaving || productForm.invalid">
+    {{ editingProduct ? "Atualizar Produto" : "Adicionar Produto" }}
+  </button>
+  <button type="button" (click)="cancelEdit.emit()" *ngIf="editingProduct">
+    Cancelar
+  </button>
+</form>

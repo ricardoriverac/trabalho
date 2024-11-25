@@ -1,0 +1,25 @@
+<div class="users">
+  <h1>Gerenciar Usuários</h1>
+
+  <!-- Mensagem de erro -->
+  <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <!-- Spinner de carregamento -->
+  <div class="loading" *ngIf="isLoading">Carregando usuários...</div>
+
+  <!-- Formulário de usuários -->
+  <app-user-form
+    [editingUser]="editingUser"
+    [isSaving]="isSaving"
+    (saveUser)="handleSaveUser($event)"
+    (cancelEdit)="editingUser = null"
+  ></app-user-form>
+
+  <!-- Lista de usuários -->
+  <app-user-list
+    [users]="users"
+    [isSaving]="isSaving"
+    (editUser)="editUser($event)"
+    (deleteUser)="deleteUser($event)"
+  ></app-user-list>
+</div>

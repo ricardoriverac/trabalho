@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let user of users">
+    <span>{{ user.firstName }} {{ user.lastName }} - {{ user.email }}</span>
+    <button (click)="editUser.emit(user)" [disabled]="isSaving">Editar</button>
+    <button (click)="deleteUser.emit(user.id)" [disabled]="isSaving">Excluir</button>
+  </li>
+</ul>
